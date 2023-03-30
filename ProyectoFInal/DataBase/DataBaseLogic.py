@@ -7,8 +7,10 @@ class BaseDeDatos:
         self.user = user
         self.password = password
         self.database = database
-        self.conexion = None
-        
+        self.conexion = None   
+         
+
+
     def conectarLaBaseDeDatos(self):
         self.conexion = mysql.connector.connect(
             host = self.host, 
@@ -25,6 +27,13 @@ class BaseDeDatos:
         else:
             print("Error en la conexion")
             
+    def crearBaseDeDatos(self, nombre):
+        myCursor = self.conexion.cursor()
+        
+        myCursor.execute(f'CREATE DATABASE {nombre}')
+        
+        
+        
     def desconectar(self):
         if self.conexion.is_connected():
             self.conexion.close()
@@ -33,5 +42,4 @@ class BaseDeDatos:
             ("No existe conexion que cerrar")
     
     
-    def __init__(self):
-        self.conectar()
+    def ingresarDatos(self, nombre, cantidad, precio):
