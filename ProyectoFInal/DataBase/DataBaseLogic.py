@@ -8,7 +8,7 @@ class BaseDeDatos:
         self.password = password
         self.database = database
         self.conexion = None   
-         
+        self.myCursor = self.conexion.cursor()
 
 
     def conectarLaBaseDeDatos(self):
@@ -28,10 +28,10 @@ class BaseDeDatos:
             print("Error en la conexion")
             
     def crearBaseDeDatos(self, nombre):
-        myCursor = self.conexion.cursor()
-        
-        myCursor.execute(f'CREATE DATABASE {nombre}')
-        
+        #Tenemos que autentificar si la base de datos ya estaba creada antes de crearla.
+        #Esto lo vamos a hacer en una lista que sera global.
+        self.myCursor.execute(f'CREATE DATABASE {nombre}')
+        print("Base de datos creada correctamente")
         
         
     def desconectar(self):
