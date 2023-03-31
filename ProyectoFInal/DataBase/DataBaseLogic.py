@@ -78,7 +78,7 @@ class BaseDeDatos:
         None
         """
         self.myCursor.execute(f'CREATE TABLE {nombre} (id INT AUTO_INCREMENT PRIMARY KEY, Producto VARCHAR(255), Precio VARCHAR(255), Cantidad VARCHAR(255))')
-        
+        print(f'Tabla {nombre} creada correctamente')
         
     
     def ingresarDatos(self, nombre, precio, cantidad, tabla):
@@ -93,7 +93,6 @@ class BaseDeDatos:
         """
         
         self.myCursor.execute(f'INSERT INTO {tabla} (Producto, Precio, Cantidad) VALUES ({nombre}, {precio}, {cantidad})')
-        
         self.conexion.commit()
         print(f"El producto {nombre} ha sido ingresado correctamente. Este se inserto en la fila {self.myCursor.lastrowid}")
         
@@ -109,7 +108,7 @@ class BaseDeDatos:
         """
         
         self.myCursor.execute(f'DELETE FROM {tabla} WHERE {auxuliarParaEliminar} = "{datoParaBuscar}"')
-    
+        print("Datos eliminados correctamente")
         
     def seleccionarTodosLosDatos(self, tabla):
         """ 
