@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qtMainWindow</class>
+ <widget class="QMainWindow" name="qtMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>CDP || Bodegas</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="qtBTNCreacionDeBodegas">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string>Creacion De Bodegas</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="qtBTNModificarInventarios">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string>Modificar Inventarios</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="qtBTNRegistroDeArticulos">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string>Registro De Articulos</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="qtBTNGestionDeBodegas">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="text">
+       <string>Gestion De Bodegas</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="qtMenuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu_Principal">
+    <property name="title">
+     <string>Menu Principal</string>
+    </property>
+    <addaction name="qtMNUSalir"/>
+   </widget>
+   <addaction name="menuMenu_Principal"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCreacion_De_Bodegas">
+   <property name="text">
+    <string>Creacion De Bodegas</string>
+   </property>
+  </action>
+  <action name="actionManejo_De_Bodegas">
+   <property name="text">
+    <string>Manejo De Bodegas</string>
+   </property>
+  </action>
+  <action name="qtMNUSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionCreacion_De_Bodegas_2">
+   <property name="text">
+    <string>Creacion De Bodegas</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
