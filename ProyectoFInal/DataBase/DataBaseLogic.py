@@ -110,7 +110,7 @@ class BaseDeDatos:
         self.myCursor.execute(f'DELETE FROM {tabla} WHERE {auxuliarParaEliminar} = "{datoParaBuscar}"')
         print("Datos eliminados correctamente")
         
-    def seleccionarTodosLosDatos(self, tabla):
+    def seleccionarTodosLosDatos(self, tabla) -> list:
         """ 
         Esta funcion selecciona todos los datos de una tabla.
         
