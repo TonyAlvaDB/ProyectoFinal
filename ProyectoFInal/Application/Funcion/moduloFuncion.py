@@ -12,6 +12,11 @@ class CreacionBodega(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWAgregarBodega() #La propieda ui contiene la instancia de la interfaz grafica que dibujamos
         self.ui.setupUi(self) #Esta linea dibuja la interfaz grafica
+
+        self.ui.qtBTNlimpiar.clicked.connect(self.qtBTNlimpiar_clicked)
+
+    def qtBTNlimpiar_clicked(self):
+        self.ui.qtTXTNombreDeBodega.clear()
         
 
 
@@ -20,8 +25,6 @@ class ModificarInventarios(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWInventarios()
         self.ui.setupUi(self)
-        # self.ui.btnImprimir.clicked.connect(self.imprimirFacturas)
-        # self.ui.btnEliminarFactura.clicked.connect(self.eliminarFactura)
 
 
 class RegistroArticulos(QtWidgets.QDialog):
@@ -34,8 +37,11 @@ class RegistroArticulos(QtWidgets.QDialog):
         input_validator = QtGui.QRegularExpressionValidator(reg_ex, self.ui.qtTXTPrecio)
         self.ui.qtTXTPrecio.setValidator(input_validator)
         
-        # self.ui.btnImprimir.clicked.connect(self.imprimirFacturas)
-        # self.ui.btnEliminarFactura.clicked.connect(self.eliminarFactura)
+        self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
+
+    def qtBTNLimpiar_clicked(self):
+        self.ui.qtTXTNombre.clear()
+        self.ui.qtTXTPrecio.clear()
 
 
 class GestionBodegas(QtWidgets.QDialog):
@@ -43,5 +49,12 @@ class GestionBodegas(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
-        # self.ui.btnImprimir.clicked.connect(self.imprimirFacturas)
-        # self.ui.btnEliminarFactura.clicked.connect(self.eliminarFactura)       
+        
+        #self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
+
+
+    # def qtBTNLimpiar_clicked(self):
+        
+
+
+    #     print("Working")      
