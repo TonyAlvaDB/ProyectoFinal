@@ -29,6 +29,11 @@ class RegistroArticulos(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWRegistroDeArticulos()
         self.ui.setupUi(self)
+
+        reg_ex = QtCore.QRegularExpression("^[0-9]*(\.[0-9]{1,2})?$")
+        input_validator = QtGui.QRegularExpressionValidator(reg_ex, self.ui.qtTXTPrecio)
+        self.ui.qtTXTPrecio.setValidator(input_validator)
+        
         # self.ui.btnImprimir.clicked.connect(self.imprimirFacturas)
         # self.ui.btnEliminarFactura.clicked.connect(self.eliminarFactura)
 
