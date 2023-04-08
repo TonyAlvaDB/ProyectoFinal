@@ -6,6 +6,8 @@ from UI.qtWDWControlDeBodegas import Ui_qtWDWControlDeBodegas
 from UI.qtWDWInventarios import Ui_qtWDWInventarios
 from UI.qtWDWRegistroDeArticulos import Ui_qtWDWRegistroDeArticulos
 from Application.Core.moduloCore import *
+lista = []
+
 
 class CreacionBodega(QtWidgets.QDialog):
     def __init__(self) -> None:
@@ -38,10 +40,15 @@ class RegistroArticulos(QtWidgets.QDialog):
         self.ui.qtTXTPrecio.setValidator(input_validator)
         
         self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
+        self.ui.qtBTNAgregarArticulo.clicked.connect(self.qtBTNAgregarArticulo)
 
     def qtBTNLimpiar_clicked(self):
         self.ui.qtTXTNombre.clear()
         self.ui.qtTXTPrecio.clear()
+
+    def qtBTNAgregarArticulo(self):
+        '''Aqui la progra para agregar un articulo'''
+        
 
 
 class GestionBodegas(QtWidgets.QDialog):
