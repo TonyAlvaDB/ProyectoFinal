@@ -1,7 +1,14 @@
 
 import mysql.connector
 
+"""
+La informacion basica de la base de datos es:
+Hostname: 127.0.0.1
+Port: 3306
+Username: root
+Password: 22011993Doremi123
 
+"""
 class BaseDeDatos:
     def __init__(self, host, user, password, database) -> None:
         self.host = host
