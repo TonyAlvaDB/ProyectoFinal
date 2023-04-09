@@ -9,7 +9,7 @@ class FrmMain(QtWidgets.QMainWindow):
         self.ui = Ui_qtMainWindow()
         self.ui.setupUi(self)
         self.ui.qtBTNCreacionDeBodegas.clicked.connect(self.onClickqtBTNCreacionDeBodegas)
-        self.ui.qtBTNModificarInventarios.clicked.connect(self.onClickqtBTNModificarInventarios)
+        self.ui.qtBTNModificaInventarios.clicked.connect(self.onClickqtBTNModificarInventarios)
         self.ui.qtBTNRegistroDeArticulos.clicked.connect(self.onClickqtBTNRegistroDeArticulos)
         self.ui.qtBTNGestionDeBodegas.clicked.connect(self.onClickqtBTNGestionDeBodegas)
         self.ui.qtMNUSalir.triggered.connect(self.onClickqtMNUSalir)
