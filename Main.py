@@ -1,4 +1,3 @@
-from DataBase.DataBaseLogic import *
 import sys
 from  PyQt6 import QtCore,QtGui,QtWidgets
 from Application.Core.moduloCore import FrmMain
