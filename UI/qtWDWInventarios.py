@@ -12,24 +12,113 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_qtWDWInventarios(object):
     def setupUi(self, qtWDWInventarios):
         qtWDWInventarios.setObjectName("qtWDWInventarios")
-        qtWDWInventarios.resize(601, 415)
-        self.label = QtWidgets.QLabel(parent=qtWDWInventarios)
-        self.label.setGeometry(QtCore.QRect(20, 20, 47, 13))
-        self.label.setObjectName("label")
-        self.comboBox = QtWidgets.QComboBox(parent=qtWDWInventarios)
-        self.comboBox.setGeometry(QtCore.QRect(80, 10, 131, 22))
-        self.comboBox.setObjectName("comboBox")
-        self.tableWidget = QtWidgets.QTableWidget(parent=qtWDWInventarios)
-        self.tableWidget.setGeometry(QtCore.QRect(240, 10, 311, 381))
+        qtWDWInventarios.resize(548, 508)
+        qtWDWInventarios.setMaximumSize(QtCore.QSize(1282, 16777215))
+        self.frame = QtWidgets.QFrame(parent=qtWDWInventarios)
+        self.frame.setGeometry(QtCore.QRect(-80, -70, 1371, 661))
+        self.frame.setStyleSheet("QFrame{\n"
+"background-color:rgb(53, 53, 79);\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"font:87 12pt \"Arial Black\";\n"
+"background-color:#000000ff;\n"
+"color:rgb(20, 200, 220);\n"
+"border-radius:5px;\n"
+"border:1px solid white;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color:black;\n"
+"}\n"
+"QLabel{\n"
+"font:87 12pt \"Arial Black\";\n"
+"background-color:#000000ff;\n"
+"color:rgb(20, 200, 220);\n"
+"border-radius:5px;\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QComboBox{\n"
+"font:87 12pt \"Arial Black\";\n"
+"background-color:#000000ff;\n"
+"color:rgb(20, 200, 220);\n"
+"border-radius:5px;\n"
+"border:1px solid white;\n"
+"}\n"
+"\n"
+"QTableWidget{\n"
+"font:87 12pt \"Arial Black\";\n"
+"background-color:#000000ff;\n"
+"color:rgb(20, 200, 220);\n"
+"border-radius:5px;\n"
+"border:1px solid white;\n"
+"border:1px solid white;\n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame.setObjectName("frame")
+        self.tableWidget = QtWidgets.QTableWidget(parent=self.frame)
+        self.tableWidget.setGeometry(QtCore.QRect(286, 102, 301, 431))
+        self.tableWidget.setStyleSheet("background:rgb(0, 0, 0)\n"
+"")
         self.tableWidget.setRowCount(0)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setFamily("Arial Black")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        item.setFont(font)
+        item.setBackground(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(20, 200, 220))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        item.setForeground(brush)
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setFamily("Arial Black")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        item.setBackground(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(20, 200, 220))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        item.setForeground(brush)
         self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setFamily("Arial Black")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        item.setBackground(QtGui.QColor(0, 0, 0))
+        brush = QtGui.QBrush(QtGui.QColor(20, 200, 220))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        item.setForeground(brush)
         self.tableWidget.setHorizontalHeaderItem(2, item)
+        self.layoutWidget = QtWidgets.QWidget(parent=self.frame)
+        self.layoutWidget.setGeometry(QtCore.QRect(90, 100, 190, 51))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label = QtWidgets.QLabel(parent=self.layoutWidget)
+        self.label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.label.setStyleSheet("background:rgb(0, 0, 0)\n"
+"")
+        self.label.setObjectName("label")
+        self.horizontalLayout.addWidget(self.label)
+        self.comboBox = QtWidgets.QComboBox(parent=self.layoutWidget)
+        self.comboBox.setStyleSheet("background:rgb(0, 0, 0)")
+        self.comboBox.setObjectName("comboBox")
+        self.horizontalLayout.addWidget(self.comboBox)
 
         self.retranslateUi(qtWDWInventarios)
         QtCore.QMetaObject.connectSlotsByName(qtWDWInventarios)
@@ -37,10 +126,10 @@ class Ui_qtWDWInventarios(object):
     def retranslateUi(self, qtWDWInventarios):
         _translate = QtCore.QCoreApplication.translate
         qtWDWInventarios.setWindowTitle(_translate("qtWDWInventarios", "CDP || Inventarios"))
-        self.label.setText(_translate("qtWDWInventarios", "Bodega"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("qtWDWInventarios", "Nombre"))
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("qtWDWInventarios", "Precio"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("qtWDWInventarios", "Cantidad"))
+        self.label.setText(_translate("qtWDWInventarios", "Bodega:"))

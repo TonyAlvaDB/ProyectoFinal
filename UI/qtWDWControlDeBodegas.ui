@@ -6,153 +6,271 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>300</height>
+    <width>949</width>
+    <height>342</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>CDP || Control De Bogedas</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>47</width>
-     <height>13</height>
+     <x>-100</x>
+     <y>-80</y>
+     <width>1091</width>
+     <height>441</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Emisor</string>
+   <property name="styleSheet">
+    <string notr="true">QFrame{
+background-color:rgb(53, 53, 79);
+}
+
+QPushButton{
+font:87 12pt &quot;Arial Black&quot;;
+background-color:#000000ff;
+color:rgb(20, 200, 220);
+border-radius:5px;
+border:1px solid white;
+
+}
+
+QPushButton:hover{
+background-color:black;
+}
+
+QLabel{
+font:87 12pt &quot;Arial Black&quot;;
+background-color:#000000ff;
+color:rgb(20, 200, 220);
+border-radius:5px;
+border:1px solid white;
+}
+
+QSpinBox{
+font:87 12pt &quot;Arial Black&quot;;
+background-color:#000000ff;
+color:rgb(20, 200, 220);
+border-radius:5px;
+border:1px solid white;
+}
+
+QComboBox{
+font:87 12pt &quot;Arial Black&quot;;
+background-color:#000000ff;
+color:rgb(20, 200, 220);
+border-radius:5px;
+border:1px solid white;
+}</string>
    </property>
-  </widget>
-  <widget class="QComboBox" name="qtCMBEmisor_2">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>10</y>
-     <width>161</width>
-     <height>22</height>
-    </rect>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>60</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
-   <property name="text">
-    <string>Receptor</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="qtCMBReceptor">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>50</y>
-     <width>161</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="qtCMBArticulos">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>90</y>
-     <width>161</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>100</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Articulo</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>140</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Articulo</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="qtSPNCantidadDeArticulos">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>130</y>
-     <width>42</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="qtTXEControlDeCambios">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>30</y>
-     <width>501</width>
-     <height>261</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="qtBTNEnviar">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>190</y>
-     <width>101</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Enviar</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="qtBTNLimpiar">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>190</y>
-     <width>101</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Limpiar</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>10</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Cambios</string>
-   </property>
+   <widget class="QTextEdit" name="qtTXEControlDeCambios">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>150</y>
+      <width>501</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:white</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>110</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+    <property name="text">
+     <string>Cambios:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>140</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>Emisor:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="qtCMBEmisor_2">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>140</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>260</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+    <property name="text">
+     <string>Articulos:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>180</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+    <property name="text">
+     <string>Receptor:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>220</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black
+</string>
+    </property>
+    <property name="text">
+     <string>Articulo:</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="qtSPNCantidadDeArticulos">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>270</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="qtCMBReceptor">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>180</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="qtCMBArticulos">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>230</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="qtBTNLimpiar">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>340</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+    <property name="text">
+     <string>Limpiar</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../Downloads/book.svg</normaloff>../../Downloads/book.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>17</width>
+      <height>17</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="qtBTNEnviar">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>340</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+    <property name="text">
+     <string>Enviar</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../Downloads/log-in.svg</normaloff>../../Downloads/log-in.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>23</height>
+     </size>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
