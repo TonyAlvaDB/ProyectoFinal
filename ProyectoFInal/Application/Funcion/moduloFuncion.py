@@ -16,9 +16,14 @@ class CreacionBodega(QtWidgets.QDialog):
         self.ui.setupUi(self) #Esta linea dibuja la interfaz grafica
 
         self.ui.qtBTNlimpiar.clicked.connect(self.qtBTNlimpiar_clicked)
+        self.ui.qtBTNAgregarBodega.clicked.connect(self.qtBTNAgregarBodega_clicked)
 
     def qtBTNlimpiar_clicked(self):
         self.ui.qtTXTNombreDeBodega.clear()
+    
+    #def qtBTNAgregarBodega_clicked(self):
+        
+        
         
 
 

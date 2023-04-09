@@ -14,7 +14,7 @@ class BaseDeDatos:
         self.host = host
         self.user = user
         self.password = password
-        self.database = database
+        self.database = None
         self.conexion = None   
         self.myCursor = self.conexion.cursor()
 
@@ -34,7 +34,6 @@ class BaseDeDatos:
             host = self.host, 
             user = self.user,
             password = self.password,
-            database = self.database
         )
         
         if self.conexion.is_connected():
@@ -147,7 +146,20 @@ class BaseDeDatos:
         myresult = self.myCursor.fetchall()
         return myresult
         
-    
+    def seleccionarBaseDeDatos(self, baseDeDatos) -> list:
+        
+        """ 
+        Esta funcion regresara la base de datos seleccionada y metida por parametros
+        
+        La funcion funcionara para poder regresar una lista que funcionara para seleccionar una
+        base de datos de una lista desplegable.
+        
+        Returns:
+        Lista
+        """
+
+        baseDeDatosParaRegresar = baseDeDatos
+        databases = self.get_database_names()
     
     
         
