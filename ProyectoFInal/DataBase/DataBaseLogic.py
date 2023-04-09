@@ -57,7 +57,7 @@ class BaseDeDatos:
             self.conexion.close()
             print("La conexion ha sido detenida")
         else:
-            ("No existe conexion que cerrar")
+            print("No existe conexion que cerrar")
 
     
     def crearBaseDeDatos(self, nombre):
@@ -71,7 +71,10 @@ class BaseDeDatos:
         Returns:
         None
         """
-        self.myCursor.execute(f'CREATE DATABASE {nombre}')
+        
+        mySQLFunction = "CREATE DATABASE %s"
+        nombreDeBaseDeDatos = nombre
+        self.myCursor.execute(mySQLFunction, nombreDeBaseDeDatos)
         print("Base de datos creada correctamente")
         
     def crearTablaNueva(self, nombre):
@@ -85,7 +88,9 @@ class BaseDeDatos:
         Returns:
         None
         """
-        self.myCursor.execute(f'CREATE TABLE {nombre} (id INT AUTO_INCREMENT PRIMARY KEY, Producto VARCHAR(255), Precio VARCHAR(255), Cantidad VARCHAR(255))')
+        nombreDeLaTabla = nombre
+        mySQLFunction = "CREATE TABLE %s (id INT AUTO_INCREMENT PRIMARY KEY, Producto VARCHAR(255), Precio VARCHAR(255), Cantidad VARCHAR(255))"
+        self.myCursor.execute(mySQLFunction, nombre)
         print(f'Tabla {nombre} creada correctamente')
         
     
@@ -99,8 +104,12 @@ class BaseDeDatos:
         Returns:
         None
         """
-        
-        self.myCursor.execute(f'INSERT INTO {tabla} (Producto, Precio, Cantidad) VALUES ({nombre}, {precio}, {cantidad})')
+        nombreDelProducto = nombre
+        cantidadDelProducto = cantidad
+        precioDelProducto = precio
+        tablaDondeSeInserta = tabla
+        mySQLFunction = "INSERT INTO %s (Producto, Precio, Cantidad) VALUES (%s, %s, %s)"
+        self.myCursor.execute(mySQLFunction, tablaDondeSeInserta, nombreDelProducto, precioDelProducto, cantidadDelProducto)
         self.conexion.commit()
         print(f"El producto {nombre} ha sido ingresado correctamente. Este se inserto en la fila {self.myCursor.lastrowid}")
         
@@ -109,13 +118,18 @@ class BaseDeDatos:
         """ 
         Esta funcion se encargara de eliminar un dato dado por parametro
         
-        Esta funcion debe recibir un dato que deseemos eliminar, la tabla 
+        Esta funcion debe recibir un dato que deseemos eliminar, la tabla, y el tipo de dato que se desea buscar.
+        Es decir, se tiene que meter tambien si se desea buscar por nombre, o precio, o ID.
         
         Returns:
         None
         """
+        datoABuscar = datoParaBuscar
+        tipoDeBusqueda = auxuliarParaEliminar
+        tablaDondeSeEliminara = tabla
+        mySQLFunction = "DELETE FROM %s WHERE %s = '%s'"
         
-        self.myCursor.execute(f'DELETE FROM {tabla} WHERE {auxuliarParaEliminar} = "{datoParaBuscar}"')
+        self.myCursor.execute(mySQLFunction, tablaDondeSeEliminara, tipoDeBusqueda, datoABuscar)
         print("Datos eliminados correctamente")
         
     def seleccionarTodosLosDatos(self, tabla) -> list:
@@ -127,7 +141,9 @@ class BaseDeDatos:
         Returns:
         Lista
         """
-        self.myCursor.execute(f'SELECT * FROM {tabla}')
+        tablaParaRetornar = tabla
+        mySQLFunction = "SELECT * FROM %s"
+        self.myCursor.execute(mySQLFunction, tablaParaRetornar)
         myresult = self.myCursor.fetchall()
         return myresult
         

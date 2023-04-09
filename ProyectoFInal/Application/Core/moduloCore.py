@@ -2,6 +2,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from UI.qtMainWindow import Ui_qtMainWindow
 from Application.Funcion.moduloFuncion import *
 
+
 class FrmMain(QtWidgets.QMainWindow):
     def __init__(self) -> None:
         super().__init__()
