@@ -12,21 +12,61 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_qtWDWAgregarBodega(object):
     def setupUi(self, qtWDWAgregarBodega):
         qtWDWAgregarBodega.setObjectName("qtWDWAgregarBodega")
-        qtWDWAgregarBodega.resize(400, 300)
-        self.qtBTNAgregarBodega = QtWidgets.QPushButton(parent=qtWDWAgregarBodega)
-        self.qtBTNAgregarBodega.setGeometry(QtCore.QRect(80, 220, 101, 23))
-        self.qtBTNAgregarBodega.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.qtBTNAgregarBodega.setObjectName("qtBTNAgregarBodega")
-        self.qtBTNlimpiar = QtWidgets.QPushButton(parent=qtWDWAgregarBodega)
-        self.qtBTNlimpiar.setGeometry(QtCore.QRect(210, 220, 101, 23))
-        self.qtBTNlimpiar.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.qtBTNlimpiar.setObjectName("qtBTNlimpiar")
-        self.label = QtWidgets.QLabel(parent=qtWDWAgregarBodega)
-        self.label.setGeometry(QtCore.QRect(20, 110, 111, 16))
+        qtWDWAgregarBodega.resize(547, 382)
+        self.frame = QtWidgets.QFrame(parent=qtWDWAgregarBodega)
+        self.frame.setGeometry(QtCore.QRect(-120, -140, 1451, 1021))
+        self.frame.setStyleSheet("QFrame{\n"
+"background-color:rgb(53, 53, 79);\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"font:87 12pt \"Arial Black\";\n"
+"background-color:#000000ff;\n"
+"color:rgb(20, 200, 220);\n"
+"border-radius:5px;\n"
+"border:1px solid white;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color:black;\n"
+"}\n"
+"\n"
+"QLabel{\n"
+"font:87 12pt \"Arial Black\";\n"
+"background-color:#000000ff;\n"
+"color:rgb(20, 200, 220);\n"
+"border-radius:5px;\n"
+"border:1px solid white;\n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame.setObjectName("frame")
+        self.label = QtWidgets.QLabel(parent=self.frame)
+        self.label.setGeometry(QtCore.QRect(130, 190, 209, 25))
+        self.label.setStyleSheet("background:black")
         self.label.setObjectName("label")
-        self.qtTXTNombreDeBodega = QtWidgets.QLineEdit(parent=qtWDWAgregarBodega)
-        self.qtTXTNombreDeBodega.setGeometry(QtCore.QRect(150, 110, 221, 20))
+        self.qtTXTNombreDeBodega = QtWidgets.QLineEdit(parent=self.frame)
+        self.qtTXTNombreDeBodega.setGeometry(QtCore.QRect(370, 190, 221, 20))
         self.qtTXTNombreDeBodega.setObjectName("qtTXTNombreDeBodega")
+        self.qtBTNlimpiar = QtWidgets.QPushButton(parent=self.frame)
+        self.qtBTNlimpiar.setGeometry(QtCore.QRect(420, 340, 141, 25))
+        self.qtBTNlimpiar.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.qtBTNlimpiar.setStyleSheet("background:black")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../../Downloads/book.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.qtBTNlimpiar.setIcon(icon)
+        self.qtBTNlimpiar.setIconSize(QtCore.QSize(17, 17))
+        self.qtBTNlimpiar.setObjectName("qtBTNlimpiar")
+        self.qtBTNAgregarBodega = QtWidgets.QPushButton(parent=self.frame)
+        self.qtBTNAgregarBodega.setGeometry(QtCore.QRect(170, 340, 211, 25))
+        self.qtBTNAgregarBodega.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.qtBTNAgregarBodega.setStyleSheet("background:black")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../../Downloads/file-plus.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.qtBTNAgregarBodega.setIcon(icon1)
+        self.qtBTNAgregarBodega.setIconSize(QtCore.QSize(18, 18))
+        self.qtBTNAgregarBodega.setObjectName("qtBTNAgregarBodega")
 
         self.retranslateUi(qtWDWAgregarBodega)
         QtCore.QMetaObject.connectSlotsByName(qtWDWAgregarBodega)
@@ -34,6 +74,6 @@ class Ui_qtWDWAgregarBodega(object):
     def retranslateUi(self, qtWDWAgregarBodega):
         _translate = QtCore.QCoreApplication.translate
         qtWDWAgregarBodega.setWindowTitle(_translate("qtWDWAgregarBodega", "CDP || Agregar Bodega"))
-        self.qtBTNAgregarBodega.setText(_translate("qtWDWAgregarBodega", "Agregar Bodega"))
-        self.qtBTNlimpiar.setText(_translate("qtWDWAgregarBodega", "Limpiar"))
         self.label.setText(_translate("qtWDWAgregarBodega", "Nombre De La Bodega"))
+        self.qtBTNlimpiar.setText(_translate("qtWDWAgregarBodega", "Limpiar"))
+        self.qtBTNAgregarBodega.setText(_translate("qtWDWAgregarBodega", "Agregar Bodega"))
