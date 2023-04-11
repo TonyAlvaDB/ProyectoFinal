@@ -9,6 +9,8 @@ Username: root
 Password: 22011993Doremi123
 
 """
+
+
 class BaseDeDatos:
     def __init__(self, host, user, password, database) -> None:
         self.host = host

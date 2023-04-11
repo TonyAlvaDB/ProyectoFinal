@@ -204,6 +204,35 @@ border:1px solid white;
         </rect>
        </property>
       </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>170</y>
+         <width>151</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:black</string>
+       </property>
+       <property name="text">
+        <string>Bodega:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="qtTXTBodega">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>170</y>
+         <width>171</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>
