@@ -6,7 +6,7 @@ from UI.qtWDWControlDeBodegas import Ui_qtWDWControlDeBodegas
 from UI.qtWDWInventarios import Ui_qtWDWInventarios
 from UI.qtWDWRegistroDeArticulos import Ui_qtWDWRegistroDeArticulos
 from Application.Core.moduloCore import *
-lista = []
+from DataBase.DataBaseLogic import BaseDeDatos as DB
 
 
 class CreacionBodega(QtWidgets.QDialog):
@@ -22,9 +22,10 @@ class CreacionBodega(QtWidgets.QDialog):
         self.ui.qtTXTNombreDeBodega.clear() 
         
     def qtBTNAgregarBodega_clicked(self):
+        nombreTabla = self.ui.qtTXTNombreDeBodega.text()
+        DB.crearTablaNueva(nombreTabla)
         '''Aqui la progra del boton agregar bodega'''
-        
-    
+
 
 
 class ModificarInventarios(QtWidgets.QDialog):
@@ -52,6 +53,13 @@ class RegistroArticulos(QtWidgets.QDialog):
         self.ui.qtTXTPrecio.clear()
 
     def qtBTNAgregarArticulo(self):
+        
+        Nombre = self.ui.qtTXTNombre.text()
+        Precio = float(self.ui.qtTXTPrecio.text())
+        Cantidad = self.ui.qtSPNSpinCantidad.value()
+        Bodega = self.ui.qtTXTBodega.text()
+
+        DB.ingresarDatos(self,Nombre,Precio,Cantidad,Bodega)
         '''Aqui la progra para agregar un articulo'''
         
 
