@@ -6,7 +6,7 @@ from UI.qtWDWControlDeBodegas import Ui_qtWDWControlDeBodegas
 from UI.qtWDWInventarios import Ui_qtWDWInventarios
 from UI.qtWDWRegistroDeArticulos import Ui_qtWDWRegistroDeArticulos
 from Application.Core.moduloCore import *
-from DataBase.DataBaseLogic import BaseDeDatos as DB
+from DataBase.DataBaseLogic import FileManager as DB
 
 
 class CreacionBodega(QtWidgets.QDialog):
@@ -22,13 +22,13 @@ class CreacionBodega(QtWidgets.QDialog):
         self.ui.qtTXTNombreDeBodega.clear() 
         
     def qtBTNAgregarBodega_clicked(self):
-        
+        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
         if self.ui.qtTXTNombreDeBodega.text() == "":
             QtWidgets.QMessageBox.warning(self, "Error", "Los campos no pueden estar vacíos")
         else:
             nombreTabla = self.ui.qtTXTNombreDeBodega.text()
-
-            DB.crearTablaNueva(nombreTabla)
+            columnas = ['id', 'nombre', 'precio', 'cantidad']
+            db.create_table(nombreTabla, columnas)
         '''Aqui la progra del boton agregar bodega'''
 
 
@@ -68,7 +68,7 @@ class RegistroArticulos(QtWidgets.QDialog):
             Cantidad = self.ui.qtSPNSpinCantidad.value()
             Bodega = self.ui.qtTXTBodega.text()
 
-            DB.ingresarDatos(self,Nombre,Precio,Cantidad,Bodega)
+            DB.insert(self,Nombre,Precio,Cantidad,Bodega)
         '''Aqui la progra para agregar un articulo'''
         
 
