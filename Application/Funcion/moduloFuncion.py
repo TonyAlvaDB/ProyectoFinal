@@ -7,7 +7,7 @@ from UI.qtWDWInventarios import Ui_qtWDWInventarios
 from UI.qtWDWRegistroDeArticulos import Ui_qtWDWRegistroDeArticulos
 from Application.Core.moduloCore import *
 from DataBase.DataBaseLogic import FileManager as DB
-
+from PyQt6.QtWidgets import QTableWidgetItem
 
 class CreacionBodega(QtWidgets.QDialog):
     def __init__(self) -> None:
@@ -53,9 +53,13 @@ class ModificarInventarios(QtWidgets.QDialog):
         for i in range(db.count_rows_in_table(text)):
             row_position = self.ui.tableWidget.rowCount()
             self.ui.tableWidget.insertRow(row_position)
-            self.ui.tableWidget.setItem(row_position, 0, listaBodega[i][0])
-            self.ui.tableWidget.setItem(row_position, 1, str(listaBodega[i][1]))
-            self.ui.tableWidget.setItem(row_position, 2, str(listaBodega[i][2]))
+            nombre = QTableWidgetItem(listaBodega[i][0])
+            precio = QTableWidgetItem(str(listaBodega[i][1]))
+            cantidad = QTableWidgetItem(str(listaBodega[i][2]))
+            
+            self.ui.tableWidget.setItem(row_position, 0, nombre)
+            self.ui.tableWidget.setItem(row_position, 1, precio)
+            self.ui.tableWidget.setItem(row_position, 2, cantidad)
                 
         
         
