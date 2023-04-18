@@ -63,7 +63,7 @@ class Ui_qtWDWInventarios(object):
         self.tableWidget.setGeometry(QtCore.QRect(286, 102, 301, 431))
         self.tableWidget.setStyleSheet("background:rgb(0, 0, 0)\n"
 "")
-        self.tableWidget.setRowCount(0)
+        self.tableWidget.setRowCount(100)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()

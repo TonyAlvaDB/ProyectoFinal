@@ -54,3 +54,5 @@ class FileManager:
             # Restamos 1 para no contar el encabezado de las columnas
             row_count = len(list(reader))
         return row_count
+
+    
