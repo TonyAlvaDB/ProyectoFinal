@@ -71,10 +71,14 @@ class RegistroArticulos(QtWidgets.QDialog):
             Nombre = self.ui.qtTXTNombre.text()
             Precio = self.ui.qtTXTPrecio.text()
             Cantidad = self.ui.qtSPNSpinCantidad.value()
-            Informacion = [self.contador,Nombre, Precio, Cantidad]
+            Informacion1 = [self.contador,Nombre, Precio, Cantidad]
             Informacion2 = [self.contador,Nombre, Precio, 0]
             Bodega = self.ui.qtTXTBodega.text()
-            db.insert(Bodega, Informacion)
+            for x in db.get_table_names():
+                if x == "CDP":
+                    db.insert(x, Informacion1)
+                else:
+                    db.insert(x, Informacion2)
             self.contador +=1
             print("El articulo se agrego correctamente")
             self.qtBTNLimpiar_clicked()
@@ -99,5 +103,4 @@ class GestionBodegas(QtWidgets.QDialog):
         self.ui.qtCMBEmisor_2.currentIndex(0)
         self.ui.qtCMBReceptor.currentIndex(0)
         self.ui.qtCMBArticulos.currentIndex(0)
-
         self.ui.qtSPNCantidadDeArticulos.setValue(0)
