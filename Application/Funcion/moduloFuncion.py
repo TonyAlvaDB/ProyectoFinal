@@ -43,9 +43,11 @@ class ModificarInventarios(QtWidgets.QDialog):
 class RegistroArticulos(QtWidgets.QDialog):
     def __init__(self) -> None:
         super().__init__()
+        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
         self.ui = Ui_qtWDWRegistroDeArticulos()
         self.ui.setupUi(self)
-        self.contador = 1
+        
+        self.contador = db.count_rows_in_table("CDP")
 
         reg_ex = QtCore.QRegularExpression("^[0-9]*(\.[0-9]{1,2})?$")
         input_validator = QtGui.QRegularExpressionValidator(reg_ex, self.ui.qtTXTPrecio)
