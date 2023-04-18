@@ -29,8 +29,8 @@ class CreacionBodega(QtWidgets.QDialog):
             nombreTabla = self.ui.qtTXTNombreDeBodega.text()
             columnas = ['id', 'nombre', 'precio', 'cantidad']
             db.create_table(nombreTabla, columnas)
-        '''Aqui la progra del boton agregar bodega'''
-
+            self.ui.qtTXTNombreDeBodega.clear()
+            
 
 class ModificarInventarios(QtWidgets.QDialog):
     def __init__(self) -> None:
@@ -44,6 +44,7 @@ class RegistroArticulos(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWRegistroDeArticulos()
         self.ui.setupUi(self)
+        self.contador = 1
 
         reg_ex = QtCore.QRegularExpression("^[0-9]*(\.[0-9]{1,2})?$")
         input_validator = QtGui.QRegularExpressionValidator(reg_ex, self.ui.qtTXTPrecio)
@@ -51,6 +52,7 @@ class RegistroArticulos(QtWidgets.QDialog):
         
         self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
         self.ui.qtBTNAgregarArticulo.clicked.connect(self.qtBTNAgregarArticulo)
+        self.ui.qtTXTBodega.setText("CDP")
  
     def qtBTNLimpiar_clicked(self):
         self.ui.qtTXTNombre.clear()
@@ -59,17 +61,19 @@ class RegistroArticulos(QtWidgets.QDialog):
         self.ui.qtSPNSpinCantidad.setValue(0)
 
     def qtBTNAgregarArticulo(self):
+        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
         if  self.ui.qtTXTNombre.text() =="" or self.ui.qtTXTPrecio.text() == "" or self.ui.qtTXTBodega.text() == "":
             QtWidgets.QMessageBox.warning(self, "Error", "Los campos no pueden estar vacíos")
-
         else:
             Nombre = self.ui.qtTXTNombre.text()
-            Precio = float(self.ui.qtTXTPrecio.text())
+            Precio = self.ui.qtTXTPrecio.text()
             Cantidad = self.ui.qtSPNSpinCantidad.value()
+            Informacion = [self.contador,Nombre, Precio, Cantidad]
             Bodega = self.ui.qtTXTBodega.text()
-
-            DB.insert(self,Nombre,Precio,Cantidad,Bodega)
-        '''Aqui la progra para agregar un articulo'''
+            db.insert(Bodega, Informacion)
+            self.contador +=1
+            print("El articulo se agrego correctamente")
+            self.qtBTNLimpiar_clicked()
         
 
 

@@ -34,6 +34,13 @@ class FileManager:
                     print(row)
         else:
             print(f"La tabla '{table_name}' no existe.")
+            
+    def get_table_names(self):
+        # Obtener la lista de archivos CSV en el directorio de la base de datos
+        archivos_csv = [archivo for archivo in os.listdir(self.db_path) if archivo.endswith('.csv')]
 
-    # Puedes implementar otras funcionalidades, como update, delete, etc., utilizando la misma lógica de manejo de archivos planos.
+        # Obtener los nombres de las tablas a partir de los nombres de archivo
+        nombres_tablas = [archivo[:-4] for archivo in archivos_csv]  # Eliminar la extensión .csv
+
+        return nombres_tablas
 
