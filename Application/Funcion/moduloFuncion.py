@@ -37,6 +37,7 @@ class ModificarInventarios(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWInventarios()
         self.ui.setupUi(self)
+        
 
 
 class RegistroArticulos(QtWidgets.QDialog):
@@ -74,6 +75,8 @@ class RegistroArticulos(QtWidgets.QDialog):
             self.contador +=1
             print("El articulo se agrego correctamente")
             self.qtBTNLimpiar_clicked()
+            for x in db.get_table_names():
+                print(x)
         
 
 
@@ -82,12 +85,17 @@ class GestionBodegas(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
+        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
 
         self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
+        for x in db.get_table_names():
+            self.ui.qtCMBReceptor.addItem(x)
+            self.ui.qtCMBEmisor_2.addItem(x)
+        
 
     def qtBTNLimpiar_clicked(self):
-        # self.ui.qtCMBEmisor_2.currentIndex(0)
-        # self.ui.qtCMBReceptor.currentIndex(0)
-        # self.ui.qtCMBArticulos.currentIndex(0)
-        # No hay opciones en los dropdown entonces aún no se pueden implementar esas líneas
+        self.ui.qtCMBEmisor_2.currentIndex(0)
+        self.ui.qtCMBReceptor.currentIndex(0)
+        self.ui.qtCMBArticulos.currentIndex(0)
+
         self.ui.qtSPNCantidadDeArticulos.setValue(0)
