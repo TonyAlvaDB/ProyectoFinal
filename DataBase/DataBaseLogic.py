@@ -1,14 +1,4 @@
-
 import mysql.connector
-
-"""
-La informacion basica de la base de datos es:
-Hostname: 127.0.0.1
-Port: 3306
-Username: root
-Password: 22011993Doremi123
-
-"""
 
 
 class BaseDeDatos:
@@ -16,152 +6,62 @@ class BaseDeDatos:
         self.host = host
         self.user = user
         self.password = password
-        self.database = None
+        self.database = database
         self.conexion = None   
-        self.myCursor = self.conexion.cursor()
+        self.myCursor = None
 
-
-    def conectarLaBaseDeDatos(self):
-        """
-        Esta funcion se encarga de la inicializacion de la base de datos
-        
-        Usa el objeto mismo para poder ingresar a la base de datos. El usuario y la contraseña de la base
-        de datos seria la misma que se usa para ingresar a la aplicacion. Se inicializara la base de datos
-        cada vez que entremos en la pantalla de cambios de inventario
-        
-        Returns:
-        None
-        """
+    
+    def conectarLaBaseDeDatos(self, host, user, password, database):
+        # Método para establecer la conexión con la base de datos
         self.conexion = mysql.connector.connect(
-            host = self.host, 
-            user = self.user,
-            password = self.password,
+            host=host, 
+            user=user,
+            password=password,
+            database=database
         )
-        
         if self.conexion.is_connected():
-            print("La conexion a la base de datos ha sido exitosa")
+            print("La conexión a la base de datos ha sido exitosa")
+            self.myCursor = self.conexion.cursor()
         else:
-            print("Error en la conexion")
+            print("Error en la conexión")
             
     def desconectar(self):
-        """ 
-        Esta funcion se encarga de cerrar de la base de datos
-        
-        Usa el objeto mismo para poder cerrar a la base de datos. Se cerrara la base de datos cuando se 
-        cierre la pantalla de bodegas.
-        
-        Returns:
-        None
-        """
-        
+        # Método para cerrar la conexión con la base de datos
         if self.conexion.is_connected():
+            self.myCursor.close()
             self.conexion.close()
-            print("La conexion ha sido detenida")
+            print("La conexión ha sido detenida")
         else:
-            print("No existe conexion que cerrar")
+            print("No existe conexión que cerrar")
 
-    
     def crearBaseDeDatos(self, nombre):
-        """
-        Esta funcion se encarga de crear la base de datos
-        
-        Solo se usara esta funcion una vez para crear una sola base de datos. Se puede ingresar una nueva 
-        base de datos de ser necesario, pero lo normal seria hacerla una sola vez a la hora de ingresar por
-        primera vez a la aplicacion.
-        
-        Returns:
-        None
-        """
-        
-        mySQLFunction = "CREATE DATABASE %s"
-        nombreDeBaseDeDatos = nombre
-        self.myCursor.execute(mySQLFunction, nombreDeBaseDeDatos)
+        # Método para crear una nueva base de datos
+        self.myCursor.execute(f'CREATE DATABASE {nombre}')
         print("Base de datos creada correctamente")
-        
+
     def crearTablaNueva(self, nombre):
-        """ 
-        Esta funcion se encarga de crear tablas
-        
-        Estas si seran necesarias para guardar los productos. Las bases de datos no seran dinamicas (es decir, 
-        no necesitamos poner columnas costumizadas). Al ser una base de datos solo necesitamos tablas que
-        nos digan el nombre del producto, el precio y la cantidad que hay.
-        
-        Returns:
-        None
-        """
-        nombreDeLaTabla = nombre
-        mySQLFunction = "CREATE TABLE %s (id INT AUTO_INCREMENT PRIMARY KEY, Producto VARCHAR(255), Precio VARCHAR(255), Cantidad VARCHAR(255))"
-        self.myCursor.execute(mySQLFunction, nombre)
+        # Método para crear una nueva tabla en la base de datos
+        self.myCursor.execute(f'CREATE TABLE {nombre} (id INT AUTO_INCREMENT PRIMARY KEY, Producto VARCHAR(255), Precio VARCHAR(255), Cantidad VARCHAR(255))')
         print(f'Tabla {nombre} creada correctamente')
-        
-    
+
     def ingresarDatos(self, nombre, precio, cantidad, tabla):
-        """ 
-        Esta funcion se encarga de ingresar los datos a la tabla
-        
-        Estan pendientes las autentificaciones de producto para verificar si x producto esta dentro de la base
-        para solo incrementar la cantidad o crear una linea nueva
-        
-        Returns:
-        None
-        """
-        nombreDelProducto = nombre
-        cantidadDelProducto = cantidad
-        precioDelProducto = precio
-        tablaDondeSeInserta = tabla
-        mySQLFunction = "INSERT INTO %s (Producto, Precio, Cantidad) VALUES (%s, %s, %s)"
-        self.myCursor.execute(mySQLFunction, tablaDondeSeInserta, nombreDelProducto, precioDelProducto, cantidadDelProducto)
+        # Método para ingresar datos a una tabla en la base de datos
+        query = 'INSERT INTO {} (Producto, Precio, Cantidad) VALUES (%s, %s, %s)'.format(tabla)
+        values = (nombre, precio, cantidad)
+        self.myCursor.execute(query, values)
         self.conexion.commit()
-        print(f"El producto {nombre} ha sido ingresado correctamente. Este se inserto en la fila {self.myCursor.lastrowid}")
-        
-        
-    def eliminarDatos(self, datoParaBuscar, auxuliarParaEliminar, tabla):
-        """ 
-        Esta funcion se encargara de eliminar un dato dado por parametro
-        
-        Esta funcion debe recibir un dato que deseemos eliminar, la tabla, y el tipo de dato que se desea buscar.
-        Es decir, se tiene que meter tambien si se desea buscar por nombre, o precio, o ID.
-        
-        Returns:
-        None
-        """
-        datoABuscar = datoParaBuscar
-        tipoDeBusqueda = auxuliarParaEliminar
-        tablaDondeSeEliminara = tabla
-        mySQLFunction = "DELETE FROM %s WHERE %s = '%s'"
-        
-        self.myCursor.execute(mySQLFunction, tablaDondeSeEliminara, tipoDeBusqueda, datoABuscar)
+        print(f"El producto {nombre} ha sido ingresado correctamente. Este se insertó en la fila {self.myCursor.lastrowid}")
+
+    def eliminarDatos(self, datoParaBuscar, auxiliarParaEliminar, tabla):
+        # Método para eliminar datos de una tabla en la base de datos
+        query = 'DELETE FROM {} WHERE {} = %s'.format(tabla, auxiliarParaEliminar)
+        values = (datoParaBuscar,)
+        self.myCursor.execute(query, values)
+        self.conexion.commit()
         print("Datos eliminados correctamente")
-        
+
     def seleccionarTodosLosDatos(self, tabla) -> list:
-        """ 
-        Esta funcion selecciona todos los datos de una tabla.
-        
-        Para poder ver los datos se tiene que iterar con un for en lo que retorna esta funcion
-        
-        Returns:
-        Lista
-        """
-        tablaParaRetornar = tabla
-        mySQLFunction = "SELECT * FROM %s"
-        self.myCursor.execute(mySQLFunction, tablaParaRetornar)
+        # Método para seleccionar todos los datos de una tabla en la base de datos
+        self.myCursor.execute(f'SELECT * FROM {tabla}')
         myresult = self.myCursor.fetchall()
         return myresult
-        
-    def seleccionarBaseDeDatos(self, baseDeDatos) -> list:
-        
-        """ 
-        Esta funcion regresara la base de datos seleccionada y metida por parametros
-        
-        La funcion funcionara para poder regresar una lista que funcionara para seleccionar una
-        base de datos de una lista desplegable.
-        
-        Returns:
-        Lista
-        """
-
-        baseDeDatosParaRegresar = baseDeDatos
-        databases = self.get_database_names()
-    
-    
-        
