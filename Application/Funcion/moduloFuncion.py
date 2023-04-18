@@ -71,8 +71,8 @@ class RegistroArticulos(QtWidgets.QDialog):
             Nombre = self.ui.qtTXTNombre.text()
             Precio = self.ui.qtTXTPrecio.text()
             Cantidad = self.ui.qtSPNSpinCantidad.value()
-            Informacion1 = [self.contador,Nombre, Precio, Cantidad]
-            Informacion2 = [self.contador,Nombre, Precio, 0]
+            Informacion1 = [db.count_rows_in_table("CDP"),Nombre, Precio, Cantidad]
+            Informacion2 = [db.count_rows_in_table("CDP"),Nombre, Precio, 0]
             Bodega = self.ui.qtTXTBodega.text()
             for x in db.get_table_names():
                 if x == "CDP":
