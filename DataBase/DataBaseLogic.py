@@ -44,3 +44,13 @@ class FileManager:
 
         return nombres_tablas
 
+    def count_rows_in_table(self, table_name):
+        # Construir la ruta del archivo CSV
+        file_path = os.path.join(self.base_dir, f"{table_name}.csv")
+
+        # Leer el archivo CSV y contar el número de filas
+        with open(file_path, 'r', newline='') as file:
+            reader = csv.reader(file)
+            # Restamos 1 para no contar el encabezado de las columnas
+            row_count = len(list(reader)) - 1
+        return row_count
