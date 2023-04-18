@@ -52,5 +52,5 @@ class FileManager:
         with open(file_path, 'r', newline='') as file:
             reader = csv.reader(file)
             # Restamos 1 para no contar el encabezado de las columnas
-            row_count = len(list(reader)) - 1
+            row_count = len(list(reader))
         return row_count
