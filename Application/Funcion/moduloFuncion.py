@@ -22,10 +22,14 @@ class CreacionBodega(QtWidgets.QDialog):
         self.ui.qtTXTNombreDeBodega.clear() 
         
     def qtBTNAgregarBodega_clicked(self):
-        nombreTabla = self.ui.qtTXTNombreDeBodega.text()
-        DB.crearTablaNueva(nombreTabla)
-        '''Aqui la progra del boton agregar bodega'''
+        
+        if self.ui.qtTXTNombreDeBodega.text() == "":
+            QtWidgets.QMessageBox.warning(self, "Error", "Los campos no pueden estar vacíos")
+        else:
+            nombreTabla = self.ui.qtTXTNombreDeBodega.text()
 
+            DB.crearTablaNueva(nombreTabla)
+        '''Aqui la progra del boton agregar bodega'''
 
 
 class ModificarInventarios(QtWidgets.QDialog):
@@ -47,19 +51,24 @@ class RegistroArticulos(QtWidgets.QDialog):
         
         self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
         self.ui.qtBTNAgregarArticulo.clicked.connect(self.qtBTNAgregarArticulo)
-
+ 
     def qtBTNLimpiar_clicked(self):
         self.ui.qtTXTNombre.clear()
         self.ui.qtTXTPrecio.clear()
+        self.ui.qtTXTBodega.clear()
+        self.ui.qtSPNSpinCantidad.setValue(0)
 
     def qtBTNAgregarArticulo(self):
-        
-        Nombre = self.ui.qtTXTNombre.text()
-        Precio = float(self.ui.qtTXTPrecio.text())
-        Cantidad = self.ui.qtSPNSpinCantidad.value()
-        Bodega = self.ui.qtTXTBodega.text()
+        if  self.ui.qtTXTNombre.text() =="" or self.ui.qtTXTPrecio.text() == "" or self.ui.qtTXTBodega.text() == "":
+            QtWidgets.QMessageBox.warning(self, "Error", "Los campos no pueden estar vacíos")
 
-        DB.ingresarDatos(self,Nombre,Precio,Cantidad,Bodega)
+        else:
+            Nombre = self.ui.qtTXTNombre.text()
+            Precio = float(self.ui.qtTXTPrecio.text())
+            Cantidad = self.ui.qtSPNSpinCantidad.value()
+            Bodega = self.ui.qtTXTBodega.text()
+
+            DB.ingresarDatos(self,Nombre,Precio,Cantidad,Bodega)
         '''Aqui la progra para agregar un articulo'''
         
 
@@ -69,12 +78,12 @@ class GestionBodegas(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
-        
-        #self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
 
+        self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
 
-    # def qtBTNLimpiar_clicked(self):
-        
-
-
-    #     print("Working")      
+    def qtBTNLimpiar_clicked(self):
+        # self.ui.qtCMBEmisor_2.currentIndex(0)
+        # self.ui.qtCMBReceptor.currentIndex(0)
+        # self.ui.qtCMBArticulos.currentIndex(0)
+        # No hay opciones en los dropdown entonces aún no se pueden implementar esas líneas
+        self.ui.qtSPNCantidadDeArticulos.setValue(0)
