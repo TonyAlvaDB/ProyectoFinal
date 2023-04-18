@@ -27,18 +27,39 @@ class CreacionBodega(QtWidgets.QDialog):
             QtWidgets.QMessageBox.warning(self, "Error", "Los campos no pueden estar vacíos")
         else:
             nombreTabla = self.ui.qtTXTNombreDeBodega.text()
-            columnas = ['id', 'nombre', 'precio', 'cantidad']
+            columnas = ['nombre', 'precio', 'cantidad']
             db.create_table(nombreTabla, columnas)
             self.ui.qtTXTNombreDeBodega.clear()
             
 
 class ModificarInventarios(QtWidgets.QDialog):
     def __init__(self) -> None:
+        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
         super().__init__()
         self.ui = Ui_qtWDWInventarios()
         self.ui.setupUi(self)
+        for x in db.get_table_names():
+            self.ui.comboBox.addItem(x)
+        self.ui.comboBox.currentTextChanged.connect(self.get_information_on_table)
+
         
 
+    def get_information_on_table(self, text):
+        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        bodega = text
+        listaBodega = db.get_full_list(bodega)
+        self.ui.tableWidget.clearContents()
+        self.ui.tableWidget.setRowCount(0)
+        for i in range(db.count_rows_in_table(text)):
+            row_position = self.ui.tableWidget.rowCount()
+            self.ui.tableWidget.insertRow(row_position)
+            self.ui.tableWidget.setItem(row_position, 0, listaBodega[i][0])
+            self.ui.tableWidget.setItem(row_position, 1, str(listaBodega[i][1]))
+            self.ui.tableWidget.setItem(row_position, 2, str(listaBodega[i][2]))
+                
+        
+        
+        
 
 class RegistroArticulos(QtWidgets.QDialog):
     def __init__(self) -> None:
@@ -71,8 +92,8 @@ class RegistroArticulos(QtWidgets.QDialog):
             Nombre = self.ui.qtTXTNombre.text()
             Precio = self.ui.qtTXTPrecio.text()
             Cantidad = self.ui.qtSPNSpinCantidad.value()
-            Informacion1 = [db.count_rows_in_table("CDP"),Nombre, Precio, Cantidad]
-            Informacion2 = [db.count_rows_in_table("CDP"),Nombre, Precio, 0]
+            Informacion1 = [Nombre, Precio, Cantidad]
+            Informacion2 = [Nombre, Precio, 0]
             Bodega = self.ui.qtTXTBodega.text()
             for x in db.get_table_names():
                 if x == "CDP":
@@ -103,3 +124,4 @@ class GestionBodegas(QtWidgets.QDialog):
         self.ui.qtCMBReceptor.currentIndex(0)
         self.ui.qtCMBArticulos.currentIndex(0)
         self.ui.qtSPNCantidadDeArticulos.setValue(0)
+    

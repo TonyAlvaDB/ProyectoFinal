@@ -12,10 +12,10 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_qtWDWInventarios(object):
     def setupUi(self, qtWDWInventarios):
         qtWDWInventarios.setObjectName("qtWDWInventarios")
-        qtWDWInventarios.resize(548, 508)
+        qtWDWInventarios.resize(700, 508)
         qtWDWInventarios.setMaximumSize(QtCore.QSize(1282, 16777215))
         self.frame = QtWidgets.QFrame(parent=qtWDWInventarios)
-        self.frame.setGeometry(QtCore.QRect(-80, -70, 1371, 661))
+        self.frame.setGeometry(QtCore.QRect(-80, -70, 1600, 661))
         self.frame.setStyleSheet("QFrame{\n"
 "background-color:rgb(53, 53, 79);\n"
 "}\n"
@@ -60,10 +60,10 @@ class Ui_qtWDWInventarios(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame.setObjectName("frame")
         self.tableWidget = QtWidgets.QTableWidget(parent=self.frame)
-        self.tableWidget.setGeometry(QtCore.QRect(286, 102, 301, 431))
+        self.tableWidget.setGeometry(QtCore.QRect(286, 102, 350, 431))
         self.tableWidget.setStyleSheet("background:rgb(0, 0, 0)\n"
 "")
-        self.tableWidget.setRowCount(100)
+        self.tableWidget.setRowCount(0)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()

@@ -54,5 +54,13 @@ class FileManager:
             # Restamos 1 para no contar el encabezado de las columnas
             row_count = len(list(reader))
         return row_count
+    
+    def get_full_list(self, table_name) -> list:
+        file_path = os.path.join(self.db_path, f"{table_name}.csv")
+        with open(file_path, 'r', newline='') as file:
+            reader = csv.reader(file)
+            data = list(reader)
+            return data
+        
 
     
