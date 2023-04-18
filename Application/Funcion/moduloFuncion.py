@@ -72,13 +72,13 @@ class RegistroArticulos(QtWidgets.QDialog):
             Precio = self.ui.qtTXTPrecio.text()
             Cantidad = self.ui.qtSPNSpinCantidad.value()
             Informacion = [self.contador,Nombre, Precio, Cantidad]
+            Informacion2 = [self.contador,Nombre, Precio, 0]
             Bodega = self.ui.qtTXTBodega.text()
             db.insert(Bodega, Informacion)
             self.contador +=1
             print("El articulo se agrego correctamente")
             self.qtBTNLimpiar_clicked()
-            for x in db.get_table_names():
-                print(x)
+            self.ui.qtTXTBodega.setText("CDP")
         
 
 
