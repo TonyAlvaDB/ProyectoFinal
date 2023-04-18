@@ -76,7 +76,7 @@ class RegistroArticulos(QtWidgets.QDialog):
             Bodega = self.ui.qtTXTBodega.text()
             for x in db.get_table_names():
                 if x == "CDP":
-                    db.insert(x, Informacion1)
+                    db.insert(Bodega, Informacion1)
                 else:
                     db.insert(x, Informacion2)
             self.contador +=1
