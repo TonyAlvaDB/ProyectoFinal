@@ -41,6 +41,7 @@ class ModificarInventarios(QtWidgets.QDialog):
         for x in db.get_table_names():
             self.ui.comboBox.addItem(x)
         self.ui.comboBox.currentTextChanged.connect(self.get_information_on_table)
+        
 
         
 
@@ -60,6 +61,7 @@ class ModificarInventarios(QtWidgets.QDialog):
             self.ui.tableWidget.setItem(row_position, 0, nombre)
             self.ui.tableWidget.setItem(row_position, 1, precio)
             self.ui.tableWidget.setItem(row_position, 2, cantidad)
+        
                 
         
         
@@ -121,6 +123,8 @@ class GestionBodegas(QtWidgets.QDialog):
         for x in db.get_table_names():
             self.ui.qtCMBReceptor.addItem(x)
             self.ui.qtCMBEmisor_2.addItem(x)
+            
+        self.ui.qtCMBArticulos.currentTextChanged.connect(self.get_articles_names)
         
 
     def qtBTNLimpiar_clicked(self):
