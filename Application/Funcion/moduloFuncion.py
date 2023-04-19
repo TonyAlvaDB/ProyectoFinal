@@ -117,7 +117,7 @@ class GestionBodegas(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
         for x in db.get_table_names():
             self.ui.qtCMBReceptor.addItem(x)
             self.ui.qtCMBEmisor_2.addItem(x)
@@ -139,7 +139,7 @@ class GestionBodegas(QtWidgets.QDialog):
     def qtBTNLimpiar_clicked(self):
         self.ui.qtSPNCantidadDeArticulos.setValue(0)
     def qtBTNEnviar_clicked(self):
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
         emisor = self.ui.qtCMBEmisor_2.currentText()
         receptor = self.ui.qtCMBReceptor.currentText()
         articulos = self.ui.qtCMBArticulos.currentText()
