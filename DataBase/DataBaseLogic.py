@@ -68,6 +68,56 @@ class FileManager:
         for x in tablaCompleta:
             tablaNombres.append(x[0])
         return tablaNombres
-        
+    
+    def transfer_item(self, source_table, destination_table, item_name, quantity):
+        source_file = os.path.join(self.db_path, f"{source_table}.csv")
+        destination_file = os.path.join(self.db_path, f"{destination_table}.csv")
+
+        if os.path.exists(source_file) and os.path.exists(destination_file):
+            # Leer los datos de la tabla de origen
+            source_data = self.get_full_list(source_table)
+
+            # Buscar el índice de la fila que contiene el nombre del artículo en la tabla de origen
+            source_row_index = None
+            for i in range(len(source_data)):
+                if source_data[i][0] == item_name:
+                    source_row_index = i
+                    break
+
+            if source_row_index is not None:
+                # Verificar si hay suficiente cantidad del artículo en la tabla de origen
+                if int(source_data[source_row_index][1]) >= quantity:
+                    # Leer los datos de la tabla de destino
+                    destination_data = self.get_full_list(destination_table)
+
+                    # Buscar el índice de la fila que contiene el nombre del artículo en la tabla de destino
+                    destination_row_index = None
+                    for i in range(len(destination_data)):
+                        if destination_data[i][0] == item_name:
+                            destination_row_index = i
+                            break
+
+                    if destination_row_index is not None:
+                        # Actualizar la cantidad del artículo en la tabla de origen y de destino
+                        source_data[source_row_index][1] = int(source_data[source_row_index][1]) - quantity
+                        destination_data[destination_row_index][1] = int(destination_data[destination_row_index][1]) + quantity
+
+                        # Escribir los datos actualizados en los archivos CSV
+                        with open(source_file, 'w', newline='') as file:
+                            writer = csv.writer(file)
+                            writer.writerows(source_data)
+                        with open(destination_file, 'w', newline='') as file:
+                            writer = csv.writer(file)
+                            writer.writerows(destination_data)
+
+                        print(f"Se transfirieron {quantity} unidades del artículo '{item_name}' de la tabla '{source_table}' a la tabla '{destination_table}' exitosamente.")
+                    else:
+                        print(f"No se encontró el artículo '{item_name}' en la tabla '{destination_table}'.")
+                else:
+                    print(f"No hay suficiente cantidad del artículo '{item_name}' en la tabla '{source_table}'.")
+            else:
+                print(f"No se encontró el artículo '{item_name}' en la tabla '{source_table}'.")
+        else:
+            print(f"Una o ambas tablas '{source_table}' y '{destination_table}' no existen.")
 
     

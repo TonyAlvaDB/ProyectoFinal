@@ -120,27 +120,33 @@ class GestionBodegas(QtWidgets.QDialog):
 
         db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
 
-        db = DB('BaseDeDatos')
-
-
-        self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
         for x in db.get_table_names():
             self.ui.qtCMBReceptor.addItem(x)
             self.ui.qtCMBEmisor_2.addItem(x)
             
-        self.ui.qtCMBReceptor.setCurrentIndex(1)
+        self.ui.qtCMBEmisor_2.setCurrentIndex(1)
+        self.ui.qtCMBReceptor.setCurrentIndex(0)
 
         for x in db.get_just_names():
             self.ui.qtCMBArticulos.addItem(x)
-
+            
+            
+        self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
+        self.ui.qtBTNEnviar.clicked.connect(self.qtBTNEnviar_clicked)
         
+
+
 
 
     def qtBTNLimpiar_clicked(self):
-        self.ui.qtCMBEmisor_2.currentIndex(0)
-        self.ui.qtCMBReceptor.currentIndex(0)
-        self.ui.qtCMBArticulos.currentIndex(0)
         self.ui.qtSPNCantidadDeArticulos.setValue(0)
+    def qtBTNEnviar_clicked(self):
+        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        emisor = self.ui.qtCMBEmisor_2.currentText()
+        receptor = self.ui.qtCMBReceptor.currentText()
+        articulos = self.ui.qtCMBArticulos.currentText()
+        cantidad = self.ui.qtSPNCantidadDeArticulos.value()
         
+        db.transfer_item(emisor, receptor, articulos, cantidad)
     
         
