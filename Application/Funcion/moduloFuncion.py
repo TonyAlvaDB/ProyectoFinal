@@ -117,9 +117,7 @@ class GestionBodegas(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
-
         db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
-
         for x in db.get_table_names():
             self.ui.qtCMBReceptor.addItem(x)
             self.ui.qtCMBEmisor_2.addItem(x)
