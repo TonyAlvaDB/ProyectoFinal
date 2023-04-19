@@ -104,7 +104,7 @@ class RegistroArticulos(QtWidgets.QDialog):
                     db.insert(Bodega, Informacion1)
                 else:
                     db.insert(x, Informacion2)
-            print("El articulo se agrego correctamente")
+            QtWidgets.QMessageBox.information(self, "Confirmación", "El producto ha sido añadido exitosamente")
             self.qtBTNLimpiar_clicked()
             self.ui.qtTXTBodega.setText("CDP")
         
