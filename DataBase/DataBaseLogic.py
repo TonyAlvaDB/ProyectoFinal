@@ -62,5 +62,12 @@ class FileManager:
             data = list(reader)
             return data
         
+    def get_just_names (self) -> list:
+        tablaCompleta = self.get_full_list("CDP")
+        tablaNombres = []
+        for x in tablaCompleta:
+            tablaNombres.append(x[0])
+        return tablaNombres
+        
 
     
