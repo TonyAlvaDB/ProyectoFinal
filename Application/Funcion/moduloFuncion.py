@@ -22,7 +22,7 @@ class CreacionBodega(QtWidgets.QDialog):
         self.ui.qtTXTNombreDeBodega.clear() 
         
     def qtBTNAgregarBodega_clicked(self):
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
         if self.ui.qtTXTNombreDeBodega.text() == "":
             QtWidgets.QMessageBox.warning(self, "Error", "Los campos no pueden estar vacíos")
         else:
@@ -34,7 +34,7 @@ class CreacionBodega(QtWidgets.QDialog):
 
 class ModificarInventarios(QtWidgets.QDialog):
     def __init__(self) -> None:
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
         super().__init__()
         self.ui = Ui_qtWDWInventarios()
         self.ui.setupUi(self)
@@ -45,7 +45,7 @@ class ModificarInventarios(QtWidgets.QDialog):
         
 
     def get_information_on_table(self, text):
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
         bodega = text
         listaBodega = db.get_full_list(bodega)
         self.ui.tableWidget.clearContents()
@@ -68,7 +68,7 @@ class ModificarInventarios(QtWidgets.QDialog):
 class RegistroArticulos(QtWidgets.QDialog):
     def __init__(self) -> None:
         super().__init__()
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
         self.ui = Ui_qtWDWRegistroDeArticulos()
         self.ui.setupUi(self)
         
@@ -89,7 +89,7 @@ class RegistroArticulos(QtWidgets.QDialog):
         self.ui.qtSPNSpinCantidad.setValue(0)
 
     def qtBTNAgregarArticulo(self):
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
         if  self.ui.qtTXTNombre.text() =="" or self.ui.qtTXTPrecio.text() == "" or self.ui.qtTXTBodega.text() == "":
             QtWidgets.QMessageBox.warning(self, "Error", "Los campos no pueden estar vacíos")
         else:
@@ -115,7 +115,7 @@ class GestionBodegas(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
-        db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
+        db = DB('BaseDeDatos')
 
         self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
         for x in db.get_table_names():
