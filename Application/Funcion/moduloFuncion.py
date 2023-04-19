@@ -117,12 +117,12 @@ class GestionBodegas(QtWidgets.QDialog):
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
-<<<<<<< HEAD
+
         db = DB('C:\\Users\\aalva\\Progra\\Clone Proyecto final\\ProyectoFinal\\BaseDeDatos')
-=======
+
         db = DB('BaseDeDatos')
 
->>>>>>> 0a40c930cac55fe2f5281e1faa6b000dab6cb514
+
         self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
         for x in db.get_table_names():
             self.ui.qtCMBReceptor.addItem(x)
