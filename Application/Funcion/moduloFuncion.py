@@ -1,3 +1,4 @@
+import os
 import traceback
 from  PyQt6 import QtCore,QtGui,QtWidgets
 from UI.qtMainWindow import Ui_qtMainWindow
@@ -43,8 +44,6 @@ class ModificarInventarios(QtWidgets.QDialog):
         self.ui.comboBox.currentTextChanged.connect(self.get_information_on_table)
         
 
-        
-
     def get_information_on_table(self, text):
         db = DB('BaseDeDatos')
         bodega = text
@@ -57,14 +56,9 @@ class ModificarInventarios(QtWidgets.QDialog):
             nombre = QTableWidgetItem(listaBodega[i][0])
             precio = QTableWidgetItem(str(listaBodega[i][1]))
             cantidad = QTableWidgetItem(str(listaBodega[i][2]))
-            
             self.ui.tableWidget.setItem(row_position, 0, nombre)
             self.ui.tableWidget.setItem(row_position, 1, precio)
             self.ui.tableWidget.setItem(row_position, 2, cantidad)
-        
-                
-        
-        
         
 
 class RegistroArticulos(QtWidgets.QDialog):
@@ -111,13 +105,13 @@ class RegistroArticulos(QtWidgets.QDialog):
             self.ui.qtTXTBodega.setText("CDP")
         
 
-
 class GestionBodegas(QtWidgets.QDialog):
     def __init__(self) -> None:
         super().__init__()
         self.ui = Ui_qtWDWControlDeBodegas()
         self.ui.setupUi(self)
         db = DB('BaseDeDatos')
+
         for x in db.get_table_names():
             self.ui.qtCMBReceptor.addItem(x)
             self.ui.qtCMBEmisor_2.addItem(x)
@@ -127,24 +121,41 @@ class GestionBodegas(QtWidgets.QDialog):
 
         for x in db.get_just_names():
             self.ui.qtCMBArticulos.addItem(x)
-            
-            
+
         self.ui.qtBTNLimpiar.clicked.connect(self.qtBTNLimpiar_clicked)
         self.ui.qtBTNEnviar.clicked.connect(self.qtBTNEnviar_clicked)
-        
-
-
-
 
     def qtBTNLimpiar_clicked(self):
         self.ui.qtSPNCantidadDeArticulos.setValue(0)
+
     def qtBTNEnviar_clicked(self):
         db = DB('BaseDeDatos')
-        emisor = self.ui.qtCMBEmisor_2.currentText()
-        receptor = self.ui.qtCMBReceptor.currentText()
-        articulos = self.ui.qtCMBArticulos.currentText()
-        cantidad = self.ui.qtSPNCantidadDeArticulos.value()
-        
-        db.transfer_item(emisor, receptor, articulos, cantidad)
+
+        try:
+            archivo = open(os.path.join("Reporte.txt"), 'a')
+
+            emisor = self.ui.qtCMBEmisor_2.currentText()
+            receptor = self.ui.qtCMBReceptor.currentText()
+            articulos = self.ui.qtCMBArticulos.currentText()
+            cantidad = self.ui.qtSPNCantidadDeArticulos.value()
+            
+            db.transfer_item(emisor, receptor, articulos, cantidad)
+            
+            archivo.write("----------------" + '\n')
+            archivo.write("Emisor: "+ emisor + '\n')
+            archivo.write("Receptor: "+ receptor + '\n')
+            archivo.write("Articulos: "+ articulos + '\n')
+            archivo.write("Cantidad enviada: "+ str(cantidad) + '\n')
+            archivo.write("----------------" + '\n')
+            archivo.close()
+
+        except OSError as oE:
+            archivo.close()
+            QtWidgets.QMessageBox.warning(self, "Error", oE.strerror)
+            print(oE.strerror)
+        except BaseException:
+            QtWidgets.QMessageBox.warning(self, "Error", traceback.format_exc())
+            print(traceback.format_exc())
+            archivo.close()
     
         
