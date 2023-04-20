@@ -30,6 +30,7 @@ class CreacionBodega(QtWidgets.QDialog):
             nombreTabla = self.ui.qtTXTNombreDeBodega.text()
             columnas = ['nombre', 'precio', 'cantidad']
             db.create_table(nombreTabla, columnas)
+            QtWidgets.QMessageBox.information(self, "Confirmación", "La bodega ha sido creada exitosamente")
             self.ui.qtTXTNombreDeBodega.clear()
             
 
@@ -42,7 +43,6 @@ class ModificarInventarios(QtWidgets.QDialog):
         for x in db.get_table_names():
             self.ui.comboBox.addItem(x)
         self.ui.comboBox.currentTextChanged.connect(self.get_information_on_table)
-        
 
     def get_information_on_table(self, text):
         db = DB('BaseDeDatos')
@@ -127,17 +127,20 @@ class GestionBodegas(QtWidgets.QDialog):
 
     def qtBTNLimpiar_clicked(self):
         self.ui.qtSPNCantidadDeArticulos.setValue(0)
+        self.ui.qtTXEControlDeCambios.setText("")
 
     def qtBTNEnviar_clicked(self):
         db = DB('BaseDeDatos')
 
         try:
+            self.ui.qtTXEControlDeCambios.setText("")
             archivo = open(os.path.join("Reporte.txt"), 'a')
-
             emisor = self.ui.qtCMBEmisor_2.currentText()
             receptor = self.ui.qtCMBReceptor.currentText()
             articulos = self.ui.qtCMBArticulos.currentText()
             cantidad = self.ui.qtSPNCantidadDeArticulos.value()
+
+            self.ui.qtTXEControlDeCambios.setText("Emisor: " + emisor + " "+"Receptor: "+ receptor + " "+"Articulos: "+ articulos + " "+"Cantidad enviada: "+ str(cantidad) + '\n')
             
             db.transfer_item(emisor, receptor, articulos, cantidad)
             
@@ -157,5 +160,4 @@ class GestionBodegas(QtWidgets.QDialog):
             QtWidgets.QMessageBox.warning(self, "Error", traceback.format_exc())
             print(traceback.format_exc())
             archivo.close()
-    
-        
+            
