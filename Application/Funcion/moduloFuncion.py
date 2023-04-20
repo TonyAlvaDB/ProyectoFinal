@@ -81,7 +81,6 @@ class RegistroArticulos(QtWidgets.QDialog):
     def qtBTNLimpiar_clicked(self):
         self.ui.qtTXTNombre.clear()
         self.ui.qtTXTPrecio.clear()
-        self.ui.qtTXTBodega.clear()
         self.ui.qtSPNSpinCantidad.setValue(0)
 
     def qtBTNAgregarArticulo(self):
