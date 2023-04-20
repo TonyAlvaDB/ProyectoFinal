@@ -91,7 +91,8 @@ class Ui_qtWDWRegistroDeArticulos(object):
         self.qtBTNLimpiar.setObjectName("qtBTNLimpiar")
         self.qtSPNSpinCantidad = QtWidgets.QSpinBox(parent=self.frame)
         self.qtSPNSpinCantidad.setGeometry(QtCore.QRect(180, 120, 121, 31))
-        self.qtSPNSpinCantidad.setStyleSheet("background:black")
+        self.qtSPNSpinCantidad.setStyleSheet("color:rgb(20, 200, 220);\n"
+"background:black")
         self.qtSPNSpinCantidad.setObjectName("qtSPNSpinCantidad")
         self.qtTXTPrecio = QtWidgets.QLineEdit(parent=self.frame)
         self.qtTXTPrecio.setGeometry(QtCore.QRect(180, 80, 133, 21))
@@ -103,7 +104,6 @@ class Ui_qtWDWRegistroDeArticulos(object):
         self.label_4.setObjectName("label_4")
         self.qtTXTBodega = QtWidgets.QLineEdit(parent=self.frame)
         self.qtTXTBodega.setGeometry(QtCore.QRect(180, 170, 171, 22))
-        self.qtTXTBodega.setReadOnly(True)
         self.qtTXTBodega.setObjectName("qtTXTBodega")
         self.verticalLayout.addWidget(self.frame)
 

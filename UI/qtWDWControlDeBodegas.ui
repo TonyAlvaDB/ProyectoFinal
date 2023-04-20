@@ -128,7 +128,8 @@ border:1px solid white;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:black</string>
+     <string notr="true">color:rgb(20, 200, 220);
+background:black</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -190,7 +191,8 @@ border:1px solid white;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:black</string>
+     <string notr="true">color:rgb(20, 200, 220);
+background:black</string>
     </property>
    </widget>
    <widget class="QComboBox" name="qtCMBReceptor">
@@ -203,7 +205,8 @@ border:1px solid white;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:black</string>
+     <string notr="true">color:rgb(20, 200, 220);
+background:black</string>
     </property>
    </widget>
    <widget class="QComboBox" name="qtCMBArticulos">
@@ -216,7 +219,8 @@ border:1px solid white;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:black</string>
+     <string notr="true">color:rgb(20, 200, 220);
+background:black</string>
     </property>
    </widget>
    <widget class="QPushButton" name="qtBTNLimpiar">

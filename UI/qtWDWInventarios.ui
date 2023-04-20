@@ -59,6 +59,9 @@ background-color:#000000ff;
 color:rgb(20, 200, 220);
 border-radius:5px;
 border:1px solid white;
+QLineEdit: white
+
+
 }
 
 QTableWidget{
@@ -68,7 +71,9 @@ color:rgb(20, 200, 220);
 border-radius:5px;
 border:1px solid white;
 border:1px solid white;
-}</string>
+}
+
+</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -210,8 +215,12 @@ border:1px solid white;
      </item>
      <item>
       <widget class="QComboBox" name="comboBox">
+       <property name="whatsThis">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="styleSheet">
-        <string notr="true">background:rgb(0, 0, 0)</string>
+        <string notr="true">color: rgb(20, 200, 220);
+background:black</string>
        </property>
       </widget>
      </item>

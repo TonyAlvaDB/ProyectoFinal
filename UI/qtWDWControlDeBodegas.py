@@ -75,7 +75,8 @@ class Ui_qtWDWControlDeBodegas(object):
         self.label.setObjectName("label")
         self.qtCMBEmisor_2 = QtWidgets.QComboBox(parent=self.frame)
         self.qtCMBEmisor_2.setGeometry(QtCore.QRect(270, 140, 161, 22))
-        self.qtCMBEmisor_2.setStyleSheet("background:black")
+        self.qtCMBEmisor_2.setStyleSheet("color:rgb(20, 200, 220);\n"
+"background:black")
         self.qtCMBEmisor_2.setObjectName("qtCMBEmisor_2")
         self.label_4 = QtWidgets.QLabel(parent=self.frame)
         self.label_4.setGeometry(QtCore.QRect(140, 260, 101, 31))
@@ -92,15 +93,18 @@ class Ui_qtWDWControlDeBodegas(object):
         self.label_3.setObjectName("label_3")
         self.qtSPNCantidadDeArticulos = QtWidgets.QSpinBox(parent=self.frame)
         self.qtSPNCantidadDeArticulos.setGeometry(QtCore.QRect(280, 270, 131, 31))
-        self.qtSPNCantidadDeArticulos.setStyleSheet("background:black")
+        self.qtSPNCantidadDeArticulos.setStyleSheet("color:rgb(20, 200, 220);\n"
+"background:black")
         self.qtSPNCantidadDeArticulos.setObjectName("qtSPNCantidadDeArticulos")
         self.qtCMBReceptor = QtWidgets.QComboBox(parent=self.frame)
         self.qtCMBReceptor.setGeometry(QtCore.QRect(270, 180, 161, 22))
-        self.qtCMBReceptor.setStyleSheet("background:black")
+        self.qtCMBReceptor.setStyleSheet("color:rgb(20, 200, 220);\n"
+"background:black")
         self.qtCMBReceptor.setObjectName("qtCMBReceptor")
         self.qtCMBArticulos = QtWidgets.QComboBox(parent=self.frame)
         self.qtCMBArticulos.setGeometry(QtCore.QRect(270, 230, 161, 22))
-        self.qtCMBArticulos.setStyleSheet("background:black")
+        self.qtCMBArticulos.setStyleSheet("color:rgb(20, 200, 220);\n"
+"background:black")
         self.qtCMBArticulos.setObjectName("qtCMBArticulos")
         self.qtBTNLimpiar = QtWidgets.QPushButton(parent=self.frame)
         self.qtBTNLimpiar.setGeometry(QtCore.QRect(310, 340, 101, 31))

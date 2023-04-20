@@ -191,7 +191,8 @@ border:1px solid white;
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background:black</string>
+        <string notr="true">color:rgb(20, 200, 220);
+background:black</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="qtTXTPrecio">
@@ -231,9 +232,6 @@ border:1px solid white;
          <width>171</width>
          <height>22</height>
         </rect>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
        </property>
       </widget>
      </widget>
