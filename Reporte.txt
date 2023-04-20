@@ -16,3 +16,9 @@ Receptor: Alajuela
 Articulos: Tomates Cherry (bandeja)
 Cantidad enviada: 1
 ----------------
+----------------
+Emisor: CDP
+Receptor: Cartago
+Articulos: Papas(kilo)
+Cantidad enviada: 3
+----------------

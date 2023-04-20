@@ -158,4 +158,3 @@ class GestionBodegas(QtWidgets.QDialog):
             QtWidgets.QMessageBox.warning(self, "Error", traceback.format_exc())
             print(traceback.format_exc())
             archivo.close()
-            
