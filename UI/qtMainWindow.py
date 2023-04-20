@@ -106,7 +106,7 @@ class Ui_qtMainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         qtMainWindow.setWindowTitle(_translate("qtMainWindow", "CDP || Bodegas"))
         self.qtBTNCreacionDeBodegas.setText(_translate("qtMainWindow", "Creacion De Bodegas"))
-        self.qtBTNModificarInventarios.setText(_translate("qtMainWindow", "Modificar Inventarios"))
+        self.qtBTNModificarInventarios.setText(_translate("qtMainWindow", "Inventarios"))
         self.qtBTNRegistroDeArticulos.setText(_translate("qtMainWindow", "Registro De Articulos"))
         self.qtBTNGestionDeBodegas.setText(_translate("qtMainWindow", "Gestion De Bodegas"))
         self.menuMenu_Principal.setTitle(_translate("qtMainWindow", "Menu Principal"))
