@@ -92,7 +92,7 @@ class RegistroArticulos(QtWidgets.QDialog):
             Precio = self.ui.qtTXTPrecio.text()
             Cantidad = self.ui.qtSPNSpinCantidad.value()
             Informacion1 = [Nombre, Precio, Cantidad]
-            Informacion2 = [Nombre, Precio, 1]
+            Informacion2 = [Nombre, Precio, 0]
             Bodega = self.ui.qtTXTBodega.text()
             for x in db.get_table_names():
                 if x == "CDP":
@@ -132,7 +132,6 @@ class GestionBodegas(QtWidgets.QDialog):
         db = DB('BaseDeDatos')
 
         try:
-            self.ui.qtTXEControlDeCambios.setText("")
             archivo = open(os.path.join("Reporte.txt"), 'a')
             emisor = self.ui.qtCMBEmisor_2.currentText()
             receptor = self.ui.qtCMBReceptor.currentText()

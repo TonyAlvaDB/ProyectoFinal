@@ -1,0 +1,18 @@
+----------------
+Emisor: CDP
+Receptor: Heredia
+Articulos: Fresa(Kilo)
+Cantidad enviada: 1
+----------------
+----------------
+Emisor: CDP
+Receptor: Alajuela
+Articulos: Fresa(Kilo)
+Cantidad enviada: 1
+----------------
+----------------
+Emisor: CDP
+Receptor: Alajuela
+Articulos: Tomates Cherry (bandeja)
+Cantidad enviada: 1
+----------------
